@@ -1,0 +1,56 @@
+name = "safelink-dev"
+type = "javascript"
+zone_id = ""
+account_id = ""
+workers_dev = false
+route = "dev.safelink.one/*"
+webpack_config = "webpack.config.js"
+usage_model = "bundled"
+
+[build]
+command = "npm install && npm run build"
+[build.upload]
+format = "service-worker"
+
+[site]
+bucket = "./public"
+entry-point = "./dist"
+
+[dev]
+ip = "0.0.0.0"
+port = 9000
+local_protocol = "http"
+upstream_protocol = "https"
+
+[[kv_namespaces]]
+binding = "SL_LINKS"
+preview_id = ""
+id = ""
+
+[[kv_namespaces]]
+binding = "SL_METRICS"
+preview_id = ""
+id = ""
+
+[vars]
+ENVIRONMENT = "dev"
+BASE_URL = "https://dev.safelink.one"
+
+[env.production]
+name = "safelink"
+route = "safelink.one/*"
+
+[env.production.vars]
+ENVIRONMENT = "prod"
+BASE_URL = "https://safelink.one"
+
+[[env.production.kv_namespaces]]
+binding = "SL_LINKS"
+id = ""
+
+[[env.production.kv_namespaces]]
+binding = "SL_METRICS"
+id = ""
+
+[env.production.triggers]
+crons = ["*/2 * * * *"]
