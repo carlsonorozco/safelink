@@ -12,7 +12,7 @@ export const setHeaders = (event: FetchEvent, response: Response): Response => {
   response.headers.set('X-Frame-Options', 'SAMEORIGIN')
   response.headers.set(
     'Content-Security-Policy',
-    `default-src * data: blob: 'self'; script-src https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js  https://static.cloudflareinsights.com/beacon.min.js 'unsafe-inline' 'unsafe-eval' blob: data: 'self'; style-src data: blob: 'unsafe-inline' *; connect-src *.safelink.one safelink.one cloudflareinsights.com api.fontawesome.com ; block-all-mixed-content; upgrade-insecure-requests;`,
+    `default-src * data: blob: 'self'; script-src https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js  https://static.cloudflareinsights.com/beacon.min.js 'unsafe-inline' 'unsafe-eval' blob: data: 'self'; style-src data: blob: 'unsafe-inline' *; connect-src *.safelink.workers.dev safelink.safelink.workers.dev *.safelink.one safelink.one cloudflareinsights.com api.fontawesome.com ; block-all-mixed-content; upgrade-insecure-requests;`,
   )
   response.headers.set('Referrer-Policy', 'origin')
   // // Set by cloudflare
